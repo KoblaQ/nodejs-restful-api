@@ -1,1 +1,30 @@
-<h1>Welcome to my homepage</h1>
+<h1>List of Users</h1>
+
+<table id="usersList">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Age</th>
+      <th>ECTS credits Completed</th>
+      <th>Enrolled</th>
+      <th>Student ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Products will be inserted here by script.js -->
+    <!-- Loop through database items -->
+    {{#each products}}
+      <tr>
+        <td>{{this.id}}</td>
+        <td>{{this.firstname}}</td>
+        <td>{{this.lastname}}</td>
+        <td>{{this.age}}</td>
+        <td>{{this.ects}}</td>
+        <td>{{#if this.enrollmentStatus}}Yes{{else}}No{{/if}}</td>
+        <td>{{this.studentID}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

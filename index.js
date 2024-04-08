@@ -6,7 +6,7 @@ const app = express(); // Create the express module
 app.use(express.json()); // Get json from the client
 app.use(express.urlencoded({ extended: false })); // Get from the url params
 
-// Dummy database.
+// Dummy database (Hardcoded).
 let users = [
   {
     id: 1,
@@ -101,6 +101,7 @@ app.use(express.static("public"));
 // });
 
 // CREATE ONE USER
+
 app.post("/api/users", (req, res) => {
   const lastId = users[users.length - 1].id;
   const newId = lastId + 1;
@@ -171,13 +172,12 @@ app.patch("/api/users/:id", (req, res) => {
   }
 });
 
-// DELETE
+// DELETE USER
 app.delete("/api/users/:id", (req, res) => {
   const userID = Number(req.params.id);
   // Check if we have the a product with the id
   const user = users.find((user) => user.id === userID);
   if (user) {
-    // cars = cars.filter(car => car.id != idToRemove);
     users = users.filter((user) => user.id !== userID);
     res.status(204).json({
       id: userID,
